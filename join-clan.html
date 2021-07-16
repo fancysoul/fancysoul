@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Join Clan | Fancy Soul Esports</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/YfM1NSB/Whats-App-Image-2021-07-13-at-00-07-10.jpg">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 mx-auto shadow border bg-white p-4 rounded">
+                <h2 class="text-center fw-bold mb-3">Join Clan</h2>
+                <form name="google-sheet">
+                    <div id="form_alerts"></div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Nama</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Masukan Nama Anda" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Nick Pubg</label>
+                        <input type="text" id="nick" name="nick" class="form-control" placeholder="Masukan Nick Pubg" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Umur</label>
+                        <input type="number" id="umur" name="umur" class="form-control" placeholder="Masukan Umur Anda" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Nomor WhatsApp</label>
+                        <input type="number" id="nomor" name="nomor" class="form-control" placeholder="Masukan Nomor WhatsApp" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Masukan Email Pribadi" required>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-2" type="submit">Send message!</button>
+                        <button class="btn btn-danger" type="reset">Reset the form!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzIa67YizxTrzBcU5FFwndRUTkAkVGxrLJfiamgkLsRfitXKOwIDasTcF4SavRKSA_ABg/exec'
+        const form = document.forms['google-sheet']
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>Contact message sent successfully.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>Contact message not sent.</div>"))
+        })
+    </script>
+</body>
+</html>

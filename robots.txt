@@ -1,0 +1,7 @@
+User-agent: *
+
+Allow: /
+
+DisAllow:
+
+Sitemap: https://fancyesports.netlify.app/sitemap.xml
