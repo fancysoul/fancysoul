@@ -4,4 +4,4 @@ Allow: /
 
 DisAllow:
 
-Sitemap: https://fancyesports.netlify.app/sitemap.xml
+Sitemap: https://fancysoul.github.io/sitemap.xml
