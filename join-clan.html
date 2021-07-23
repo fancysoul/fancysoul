@@ -11,6 +11,17 @@
 section {
   padding-top: 5rem;
 }
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 <!DOCTYPE html>
@@ -27,7 +38,7 @@ section {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <!-- My CSS -->
-
+    
     <title>Join Clan | Fancy Soul Esports</title>
   </head>
   <body id="home">
@@ -65,9 +76,18 @@ section {
       </svg>
     </section>
     <!-- Akhir About -->
-
- 
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" />
+    <a id="popuplink" href="#inline" style="display:none;"></a>
+    <div id="inline" style="display:none;text-align:center;">
+    <img src="https://thebeachfurniture.co.nz/newbeach-logo.png" alt="" id="logo">
+    <img src="https://i.ibb.co/FwBPxL2/Scrim.png" alt="" style="width: 260px;">
+    <p>Syarat" Join Clan</p>
+    <p><a href="javascript:;" onclick="jQuery.fancybox.close();" style="background-color:#333;padding:5px 10px;color:#fff;border-radius:5px;text-decoration:none;">Close</a></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.js"></script>
+    
     <!-- Contact -->
     <section id="contact">
       <div class="container">
@@ -76,6 +96,7 @@ section {
             <h2>Join CLan</h2>
           </div>
         </div>
+  
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
@@ -120,6 +141,7 @@ section {
                 <input type="number" class="form-control" id="nomor wa" aria-describedby="nomor wa" name="nomor wa" />
               </div>
               <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
+
 
               <button class="btn btn-primary btn-loading d-none" type="button" disabled>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -174,6 +196,23 @@ section {
           })
           .catch((error) => console.error('Error!', error.message));
       });
+      jQuery(document).ready(function () {
+    function openFancybox() {
+        setTimeout(function () {
+            jQuery('#popuplink').trigger('click');
+        }, 500);
+    };
+    var visited = jQuery.cookie('visited');
+    if (visited == 'yes') {
+         // second page load, cookie active
+    } else {
+        openFancybox(); // first page load, launch fancybox
+    }
+    jQuery.cookie('visited', 'yes', {
+        expires: 365 // the number of days cookie  will be effective
+    });
+    jQuery("#popuplink").fancybox({modal:true, maxWidth: 400, overlay : {closeClick : true}});
+});
     </script>
   </body>
 </html>
